@@ -19,6 +19,8 @@
 - Scrimba Module 5 Solo Project: Restaurant Ordering App
 - [Scrim](https://scrimba.com/learn/frontend/solo-project-restaurant-ordering-app-co72e499baf5f48346e5975cf)
 
+- [Group project Notion file](https://different-marmoset-f7b.notion.site/Restaurant-Ordering-App-c578309957b74836abe0eb0b61eb742c)
+
 
 ### The challenge
 
