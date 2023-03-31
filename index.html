@@ -1,28 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Restaurant Ordering App</title>
 
     <!-- GOOGLE FONTS -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!--CSS STYLESHEET-->    
-        <link rel="stylesheet" href="index.css">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-    
+    <!--CSS STYLESHEET-->
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
+  <body>
+    <header>
+      <img src="./images/header.png" alt="hamburger" />
+    </header>
+    <main>
+      <section class="menu-container">
+        <!-- --below to be moved to JS file-- -->
+        <div class="menu-item">
+          <div class="menu-item-details">
+            <span class="menu-item-emoji">🍕</span>
+            <div>
+              <h2 class="menu-item-name">Pizza</h2>
+              <p class="menu-item-ingredients">
+                pepperoni, mushrooms, mozzarella
+              </p>
+              <p class="menu-item-price">$14</p>
+            </div>
+          </div>
+          <button class="add-btn">+</button>
+        </div>
+        <!-- --above to be moved to JS file-- -->
+      </section>
 
+      <!-- Order container -->
+      <section class="order-container hidden">
+        <h2>Your Order</h2>
+        <!-- --below to be moved to JS file-- -->
+        <div>
+          <p>Pizza (1)</p>
+          <p>$14</p>
+        </div>
+        <!-- --above to be moved to JS file-- -->
+        <div class="total-price">
+          <p>Total price:</p>
+          <p>$$$</p>
+        </div>
+        <button>Complete order</button>
+      </section>
 
+      <!-- Payment modal -->
+      <section class="payment-modal hidden">
+        <div>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="inner-payment-modal">
+          <h2>Enter card details</h2>
+          <form>
+            <input
+              type="text"
+              id="customer-name"
+              name="customer-name"
+              placeholder="Enter your name"
+              aria-label="customer-name"
+              required
+            />
+            <input
+              type="number"
+              id="card-number"
+              name="card-number"
+              placeholder="Enter card number"
+              aria-label="card-number"
+              required
+            />
+            <input
+              type="number"
+              id="cvv"
+              name="cvv"
+              placeholder="Enter CVV"
+              aria-label="cvv"
+              required
+            />
+            <button type="submit" class="order-btn">Pay</button>
+          </form>
+        </div>
+      </section>
 
+      <!-- Thank you message -->
+      <section class="thank-you-msg hidden" id="thank-you-msg">
+        Thank you message rendered in JS
+      </section>
+    </main>
     <script src="index.js" type="module"></script>
-
-</body>
-
+  </body>
+</html>
