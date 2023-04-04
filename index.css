@@ -5,9 +5,7 @@
 
 :root {
     
-    /*COLORS*/
-    
-    /*BORDER RADIUS*/
+     /*BORDER RADIUS*/
     --br-soft: 1rem;
     --br-round: 50%;
     --br-reg: 5px;
@@ -43,7 +41,7 @@ header img {
 
 main {
     max-width: 600px;
-    min-width: 375px;
+    min-width: 320px;
     padding: 1.4rem;
 }
 
@@ -60,6 +58,7 @@ main {
     display: grid;
     grid-template-columns: 20% 1fr;
 }
+
 .menu-item-emoji {
     align-self: start;
     justify-self: center;
@@ -169,7 +168,10 @@ input {
 
 /******* Misc *******/
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
     color: var(--fc-h);
 }
 
