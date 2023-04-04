@@ -1,6 +1,8 @@
+import { menuArray } from "./data.js"
+
 /****** VARIABLES ******/
 
-export { menuArray } from "./data.js"
+
 
 
 
