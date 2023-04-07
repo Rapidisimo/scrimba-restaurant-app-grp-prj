@@ -41,7 +41,7 @@ function renderMenu() {
 renderMenu()
 
 function renderOrder() {
-    //TODO TASK #1
+    //TODO TASK #1 - Josue
     /*
     render HTML for "Your Order"
     */
@@ -51,35 +51,31 @@ function renderOrder() {
 
 //?Event delegation?
 
-//TODO TASK #1
+//TODO TASK #1 - Josue
 //! Listen for click on all menu items "add" button
-//? Should we add quantity to data.js?
 menuContainer.addEventListener("click", function() {
     /*
     If "Your Order" is hidden then unhide it 
     Push menu item clicked to a cartArray 
     Add item name to "Your Order"
-    Increase item quantity if greater than 1
-    Display item price, add price if greater than 1
     Add menu item price to a running total 
     Call function to build "Your Order" --> renderOrder
     */
 
 })
 
-//TODO TASK #2
+//TODO TASK #2 - Christina
 //! BTN var remove menu item
 .addEventListener("click", function() {
     /*
-    Decrease item quantity
-    Subtract item price
-    Remove item from cartArray if less than 1
+    Remove item from "Your Order"
     Calculate / subtract running total
+    If there are no items, then hide "Your Order"
     */
 })
 
 
-//TODO TASK #3
+//TODO TASK #3 - Cassie
 //! BTN var complete order
 .addEventListener("click", function() {
     /*
@@ -87,7 +83,7 @@ menuContainer.addEventListener("click", function() {
     */
 })
 
-//TODO TASK #4
+//TODO TASK #4 - Cassie
 //! BTN var close modal
 .addEventListener("click", function() {
     /*
@@ -95,7 +91,7 @@ menuContainer.addEventListener("click", function() {
     */
 })
 
-//TODO TASK #5
+//TODO TASK #5 - Cassie
 //! BTN var pay from modal
 .addEventListener("click", function() {
     /*
