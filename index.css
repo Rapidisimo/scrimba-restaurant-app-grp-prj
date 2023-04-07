@@ -42,14 +42,14 @@ header img {
 main {
     max-width: 600px;
     min-width: 320px;
-    padding: 1.4rem;
+    padding: 1rem 1.4rem 1rem;
 }
 
 .menu-item {
     display: grid;
     grid-template-columns: 75% 25%;
     margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: .2em;
     border-bottom: 1px solid hsl(0, 0%, 82%);
 }
 
@@ -90,23 +90,24 @@ main {
 
 .order-container h2 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
-/* This doesn't have a class so I had to target it this way */
-.order-container div:first-of-type {
+.item-category {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: space-between;
-    border-bottom: 1px solid black;
     padding-bottom: .4rem;
-    margin-bottom: .4rem;
+}
+
+.item-name {
+    flex-grow: 1;
 }
 
 .order-container div p {
     color: var(--fc-h);
-    padding: .4rem;
+    padding: .2rem;
     margin: 0;
 }
 
@@ -120,6 +121,7 @@ main {
 .total-price {
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid black;
 }
 
 .order-container #complete-btn,
@@ -189,7 +191,7 @@ h4 {
 p {
     font-size: var(--fs-xs);
     color: var(--fc-p);
-    margin-bottom: .6rem;
+    margin-bottom: .4rem;
 }
 
 input,

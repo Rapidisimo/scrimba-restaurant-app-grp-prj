@@ -10,6 +10,7 @@ const menuContainer = document.getElementById("menu-container");
 //! BTN var remove menu item
 //! BTN var pay from modal
 //! BTN var close modal
+const tmp = document.querySelector('body') //temporary to remove console errors
 
 //! var cartArray 
 //! var runningTotal 
@@ -40,11 +41,24 @@ function renderMenu() {
 
 renderMenu()
 
-function renderOrder() {
+function renderOrder(menuItems) {
     //TODO TASK #1 - Josue
     /*
     render HTML for "Your Order"
     */
+    const orderItems = document.getElementById('order-summary');
+    let orderHtml = '';
+    menuItems.forEach( menuItem => {
+        orderHtml += `
+            <div class="item-category">
+                <p class="item-name">${menuItem.name}</p>
+                <!-- <p>(1)</p> --> <!--? Change quantity of items when added/removed?-->
+                <button id="remove-btn">remove</button>
+                <p>$${menuItem.price}</p>
+            </div>
+            `
+    })
+    orderItems.innerHTML = orderHtml;
 }
 
 /****** EVENT LISTENERS ******/
@@ -53,7 +67,15 @@ function renderOrder() {
 
 //TODO TASK #1 - Josue
 //! Listen for click on all menu items "add" button
-menuContainer.addEventListener("click", function() {
+menuContainer.addEventListener("click", (e) => {
+    if(e.target.className === 'add-btn') {
+        let item = e.target.dataset.item;
+        cartArray.push(menuArray[item]);
+        console.log(cartArray)
+        // runningTotal += (menuArray[item].price);
+        renderOrder(cartArray);
+    }
+
     /*
     If "Your Order" is hidden then unhide it 
     Push menu item clicked to a cartArray 
@@ -66,7 +88,7 @@ menuContainer.addEventListener("click", function() {
 
 //TODO TASK #2 - Christina
 //! BTN var remove menu item
-.addEventListener("click", function() {
+tmp.addEventListener("click", function() {
     /*
     Remove item from "Your Order"
     Calculate / subtract running total
@@ -77,7 +99,7 @@ menuContainer.addEventListener("click", function() {
 
 //TODO TASK #3 - Cassie
 //! BTN var complete order
-.addEventListener("click", function() {
+tmp.addEventListener("click", function() {
     /*
     show payment modal
     */
@@ -85,7 +107,7 @@ menuContainer.addEventListener("click", function() {
 
 //TODO TASK #4 - Cassie
 //! BTN var close modal
-.addEventListener("click", function() {
+tmp.addEventListener("click", function() {
     /*
     close payment modal
     */
@@ -93,7 +115,7 @@ menuContainer.addEventListener("click", function() {
 
 //TODO TASK #5 - Cassie
 //! BTN var pay from modal
-.addEventListener("click", function() {
+tmp.addEventListener("click", function() {
     /*
     close payment modal, display thank you message
     "Thanks Name! Your order is on its way!"
