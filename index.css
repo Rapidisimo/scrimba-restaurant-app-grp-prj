@@ -96,6 +96,8 @@ main {
 /* This doesn't have a class so I had to target it this way */
 .order-container div:first-of-type {
     display: flex;
+    align-items: center;
+    gap: 1rem;
     justify-content: space-between;
     border-bottom: 1px solid black;
     padding-bottom: .4rem;
@@ -104,6 +106,15 @@ main {
 
 .order-container div p {
     color: var(--fc-h);
+    padding: .4rem;
+    margin: 0;
+}
+
+#remove-btn {
+    background-color: transparent;
+    color: hsl(0, 0%, 37%);
+    margin-right: auto;
+    font-size: .8rem;
 }
 
 .total-price {
@@ -111,8 +122,8 @@ main {
     justify-content: space-between;
 }
 
-.order-container button,
-.inner-payment-modal button {
+.order-container #complete-btn,
+.inner-payment-modal .order-btn {
     background-color: hsl(160, 82%, 47%);
     color: white;
     width: 100%;
