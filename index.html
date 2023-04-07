@@ -21,27 +21,35 @@
 
   <body>
     <header>
-      <img src="./images/header.png" alt="hamburger" />
+      <img src="./images/header.png" 
+        alt="Image of a hamburger with the words Jimmy's Diner, the best burgers and pizzas in town" />
     </header>
     
     <main>
       
-      <section class="menu-container">
+      <section class="menu-container" id="menu-container">
+        
         <!-- --below to be moved to JS file-- -->
         <div class="menu-item">
+          
           <div class="menu-item-details">
-            <span class="menu-item-emoji">🍕</span>
+            <span class="menu-item-emoji">🍕</span><!--?accessibility-->
+              
             <div>
-              <h2 class="menu-item-name">Pizza</h2>
-              <p class="menu-item-ingredients">
+                <h2 class="menu-item-name">Pizza</h2>
+                <p class="menu-item-ingredients">
                 pepperoni, mushrooms, mozzarella
-              </p>
-              <p class="menu-item-price">$14</p>
+                </p>
+                <p class="menu-item-price">$14</p>
             </div>
+          
           </div>
-          <button class="add-btn">+</button>
+          
+          <button class="add-btn">+</button><!--?accessibility-->
+        
         </div>
         <!-- --above to be moved to JS file-- -->
+      
       </section>
 
       <!-- Order container -->
@@ -52,14 +60,21 @@
         <!-- --below to be moved to JS file-- -->
         <div>
           <p>Pizza (1)</p>
+
+          <!--! remove button needed-->
+          <!--<button>remove</button>-->
+          
           <p>$14</p>
         </div>
         <!-- --above to be moved to JS file-- -->
+        
         <div class="total-price">
           <p>Total price:</p>
           <p>$$$</p>
         </div>
-        <button>Complete order</button>
+        
+        <button id="complete-btn">Complete order</button>
+      
       </section>
 
       <!-- Payment modal -->
@@ -106,7 +121,10 @@
       <section class="thank-you-msg hidden" id="thank-you-msg">
         Thank you message rendered in JS
       </section>
+    
     </main>
+
     <script src="index.js" type="module"></script>
   </body>
+
 </html>
