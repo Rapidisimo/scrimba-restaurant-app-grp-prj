@@ -19,49 +19,83 @@ let runningTotal = 0;
 /****** FUNCTIONS ******/
 
 function renderMenu() {
-    /*
-    Function: Build menu items HTML from data.js 
-    Create variable to hold output 
-    For Each MenuArray item output it's property to the designated html and add it to the output variable 
-    return the output variable 
-
-    Variable for menu items innerHTML = function to build menu items 
-    */
+    let menuFeed = ""
+    menuArray.forEach(function(item) {
+        menuFeed += ` <div class="menu-item">
+          <div class="menu-item-details">
+            <span class="menu-item-emoji">${item.emoji}</span>
+            <div>
+              <h2 class="menu-item-name">${item.name}</h2>
+              <p class="menu-item-ingredients">
+                ${item.ingredients}
+              </p>
+              <p class="menu-item-price">$${item.price}</p>
+            </div>
+          </div>
+          <button class="add-btn" data-item="${item.id}">+</button>
+        </div>`
+    })
+    menuContainer.innerHTML = menuFeed; 
 }
 
 renderMenu()
+
+function renderOrder() {
+    //TODO TASK #1
+    /*
+    render HTML for "Your Order"
+    */
+}
 
 /****** EVENT LISTENERS ******/
 
 //?Event delegation?
 
-//!Listen for click on all menu items
+//TODO TASK #1
+//! Listen for click on all menu items "add" button
+//? Should we add quantity to data.js?
 menuContainer.addEventListener("click", function() {
     /*
-    Push menu item clicked to a cartArray 
-    Add menu item price to a running total 
     If "Your Order" is hidden then unhide it 
-    Call function to build "Your Order" 
+    Push menu item clicked to a cartArray 
+    Add item name to "Your Order"
+    Increase item quantity if greater than 1
+    Display item price, add price if greater than 1
+    Add menu item price to a running total 
+    Call function to build "Your Order" --> renderOrder
     */
 
 })
 
-//! BTN var complete order
-.addEventListener("click", function() {
-    /*
-    show modal
-    */
-})
-
+//TODO TASK #2
 //! BTN var remove menu item
 .addEventListener("click", function() {
     /*
-    remove menu item
-    //? remove from cart array
-    //? remove from running total
+    Decrease item quantity
+    Subtract item price
+    Remove item from cartArray if less than 1
+    Calculate / subtract running total
     */
 })
 
+
+//TODO TASK #3
+//! BTN var complete order
+.addEventListener("click", function() {
+    /*
+    show payment modal
+    */
+})
+
+//TODO TASK #4
+//! BTN var close modal
+.addEventListener("click", function() {
+    /*
+    close payment modal
+    */
+})
+
+//TODO TASK #5
 //! BTN var pay from modal
 .addEventListener("click", function() {
     /*
@@ -70,16 +104,15 @@ menuContainer.addEventListener("click", function() {
     */
 })
 
-//! BTN var close modal
-.addEventListener("click", function() {
-    /*
-    close payment modal
+
+//TODO TASK #6
+//! STRETCH GOAL - meal discount
+    /* add logic to discount meal under certain conditions*/
+
+//TODO TASK #7
+//! STRETCH GOAL - rate experience, 0 - 5 stars
+    /* 
+    add to thank you message
+    idea: radio inputs as stars
+    added idea link to HTML 
     */
-})
-
-
-
-//!STRETCH GOALS: 
-//!MEAL DISCOUNT, EX: FOOD AND BEVERAGE TOGETHER, 15% DISCOUNT
-//!RATING
-

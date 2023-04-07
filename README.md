@@ -67,6 +67,7 @@ Stretch goals:
 
 ### What I learned
 
+
 ### Continued development
 
 
@@ -74,14 +75,21 @@ Stretch goals:
 
 -[Scrimba help](https://projects.scrimba.com/restaurant-menu)
 
+-[Codepen for star rating](https://codepen.io/neilpomerleau/pen/wzxzQM )
+
 
 ## Author
+
+Christina
+Josue
 
 - Website - [C Lewis](https://www.clewisdev.com)
 - LinkedIn - [LinkedIn](https://www.linkedin.com/in/clewisdev/)
 
 
 ## Acknowledgments
+
+-[Codepen](https://codepen.io/neilpomerleau)
 
 
 

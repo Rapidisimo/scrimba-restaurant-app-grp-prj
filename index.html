@@ -30,10 +30,10 @@
       <section class="menu-container" id="menu-container">
         
         <!-- --below to be moved to JS file-- -->
-        <div class="menu-item">
+        <!-- <div class="menu-item">
           
           <div class="menu-item-details">
-            <span class="menu-item-emoji">🍕</span><!--?accessibility-->
+            <span class="menu-item-emoji">🍕</span>
               
             <div>
                 <h2 class="menu-item-name">Pizza</h2>
@@ -45,21 +45,23 @@
           
           </div>
           
-          <button class="add-btn">+</button><!--?accessibility-->
+          <button class="add-btn">+</button>
         
-        </div>
+        </div> -->
         <!-- --above to be moved to JS file-- -->
       
       </section>
 
       <!-- Order container -->
       <section class="order-container hidden">
+      <!--? Do we need another container to render "Your Order", or are we rendering all the HTML from this section?-->  
     
         <h2>Your Order</h2>
       
         <!-- --below to be moved to JS file-- -->
         <div>
-          <p>Pizza (1)</p>
+          <p>Pizza</p> 
+          <p>(1)</p>
 
           <button id="remove-btn">remove</button>
           
@@ -119,6 +121,10 @@
       <!-- Thank you message -->
       <section class="thank-you-msg hidden" id="thank-you-msg">
         Thank you message rendered in JS
+        
+        <!--TODO TASK #7 STRETCH GOAL - rate experience, 0-5 stars -->
+        <!--? Codepen link for HTML / CSS star rating idea  https://codepen.io/neilpomerleau/pen/wzxzQM  -->
+      
       </section>
     
     </main>
@@ -127,3 +133,4 @@
   </body>
 
 </html>
+
