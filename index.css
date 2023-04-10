@@ -224,6 +224,10 @@ p {
     margin-bottom: .4rem;
 }
 
+.hidden {
+    display: none;
+}
+
 input,
 button,
 .order-container button,
