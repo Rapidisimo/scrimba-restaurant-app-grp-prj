@@ -4,9 +4,11 @@ import { menuArray } from "./data.js"
 
 //! Create variable for menu items section in DOM 
 const menuContainer = document.getElementById("menu-container");
+const completeBtn = document.getElementById("complete-btn");
 
+const paymentModal = document.getElementById("payment-modal");
 //! Buttons we need
-//! BTN var complete order
+
 //! BTN var remove menu item
 //! BTN var pay from modal
 //! BTN var close modal
@@ -80,6 +82,7 @@ function renderOrder(menuItems) {
 
 //TODO TASK #1 - Josue
 //! Listen for click on all menu items "add" button
+
 menuContainer.addEventListener("click", (e) => {
     if(e.target.className === 'add-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
@@ -92,6 +95,7 @@ menuContainer.addEventListener("click", (e) => {
         }
         renderOrder(cartArray);
     }
+
     /*
     If "Your Order" is hidden then unhide it 
     Push menu item clicked to a cartArray 
@@ -102,23 +106,23 @@ menuContainer.addEventListener("click", (e) => {
 
 })
 
+
 //TODO TASK #2 - Christina
 //! BTN var remove menu item
+
 tmp.addEventListener("click", function() {
+
     /*
     Remove item from "Your Order"
     Calculate / subtract running total
     If there are no items, then hide "Your Order"
     */
+// })
 })
 
+completeBtn.addEventListener("click", function() {
+   paymentModal.style.display = "block";
 
-//TODO TASK #3 - Cassie
-//! BTN var complete order
-tmp.addEventListener("click", function() {
-    /*
-    show payment modal
-    */
 })
 
 //TODO TASK #4 - Cassie

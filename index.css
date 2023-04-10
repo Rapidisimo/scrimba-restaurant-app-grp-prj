@@ -134,9 +134,31 @@ main {
     padding: .8rem 0 .8rem;
     margin: 1.3rem 0rem .5rem;
     font-size: var(--fs-xs);
+
+    /*TODO Cassie added */
+    font-weight: 700; 
+    letter-spacing: .1rem; 
+    border-radius: var(--br-reg);
 }
 
 /******* Payment Modal *******/
+
+/*TODO Cassie added*/
+.payment-modal {
+    display: none;
+    max-width: 525px;
+    width: 90%;
+    height: 525px;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1em;
+    margin: auto;
+    box-shadow: 0 20px 150px 150px gray;
+}
 
 /* No class provided to target this */
 .payment-modal div:first-of-type {
@@ -145,6 +167,7 @@ main {
 }
 
 .close-btn {
+    font-family: inherit;
     padding: .6rem .8rem .6rem;
     border-radius: var(--br-reg);
     background-color: rgb(197, 189, 189);
@@ -152,21 +175,27 @@ main {
 }
 
 .inner-payment-modal h2 {
-    font-size: var(--fs-s);
+    font-size: var(--fs-m);
     text-align: center;
     margin-bottom: 1.6rem;
 }
 
+/*TODO Cassie changed to flex to center items */
 .inner-payment-modal form {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: .4rem;
 }
 
 input {
-    border: 1.2px solid hsl(0, 0%, 46%);
+    width: 100%; /*TODO Cassie added*/
+    font-size: var(--fs-s);
+    color: rgba(117, 117, 117, 1); /*TODO Cassie added*/
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1.2px solid rgb(156, 156, 156);
     border-radius: var(--br-reg);
-    padding: 1rem;
-    margin-bottom: .4rem;
 }
 
 /******* Thank You Message *******/
@@ -195,6 +224,10 @@ p {
     margin-bottom: .4rem;
 }
 
+.hidden {
+    display: none;
+}
+
 input,
 button,
 .order-container button,
@@ -203,9 +236,6 @@ button,
     font-family: 'Roboto', sans-serif;
 }
 
-.hidden {
-    display: none;
-}
 
 button {
     background-color: gray;
@@ -241,3 +271,20 @@ button {
         font-size: var(--fs-s);
     }
 }
+
+/*TODO Cassie added */
+/****** REMOVE NUMBER SPINNER FROM INPUTS ******/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
