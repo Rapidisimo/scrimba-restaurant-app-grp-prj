@@ -48,10 +48,11 @@ function renderOrder(menuItems) {
     */
     const orderItems = document.getElementById('order-summary');
     const cart = document.querySelector('.order-container')
-    if(cart.classList.contains('hidden')) {
+
+    if(cart.classList.contains('hidden')) { //toggle Your Order section visible
         cart.classList.toggle('hidden')
     }
-    let orderHtml = '';
+    let orderHtml = ''; //go through each item in the array and build out the Your Order section
     menuItems.forEach( menuItem => {
         orderHtml += `
             <div class="item-category">
@@ -63,15 +64,14 @@ function renderOrder(menuItems) {
             </div>
             `
     })
-    orderItems.innerHTML = orderHtml;
+    orderItems.innerHTML = orderHtml; //update DOM
 
-        let itemsTotal = 0;
-        for(let i = 0; i < cartArray.length; i++) {
-            itemsTotal += (cartArray[i].price * cartArray[i].quantity)
-        }
-
-    runningTotal = itemsTotal
-    document.getElementById('total').innerText = `$${runningTotal}`
+    let itemsTotal = 0; //for loop to get a Total Price
+    for(let i = 0; i < cartArray.length; i++) {
+        itemsTotal += (cartArray[i].price * cartArray[i].quantity)
+    }
+    runningTotal = itemsTotal //update global variable
+    document.getElementById('total').innerText = `$${runningTotal}` //update DOM
 }
 
 /****** EVENT LISTENERS ******/
@@ -82,13 +82,13 @@ function renderOrder(menuItems) {
 //! Listen for click on all menu items "add" button
 menuContainer.addEventListener("click", (e) => {
     if(e.target.className === 'add-btn') {
-        let item = e.target.dataset.item;
-        const updateIndex = cartArray.findIndex((food => food.id == item))
+        let item = e.target.dataset.item; //get an id for what was clicked
+        const updateIndex = cartArray.findIndex((food => food.id == item)) //array method to find an item
 
-        if(updateIndex > -1) {
+        if(updateIndex > -1) { //if the item is already in the array increase it's quantity
             cartArray[updateIndex].quantity += 1;
         }else {
-            cartArray.push({...menuArray[item], quantity: 1}); 
+            cartArray.push({...menuArray[item], quantity: 1}); //if the item is not in the array add it and the quantity property
         }
         renderOrder(cartArray);
     }
