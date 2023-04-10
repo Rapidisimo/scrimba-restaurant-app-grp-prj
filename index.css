@@ -101,8 +101,9 @@ main {
     padding-bottom: .4rem;
 }
 
-.item-name {
-    flex-grow: 1;
+.item-info {
+    display: flex;
+    gap: 1rem;
 }
 
 .order-container div p {
@@ -203,7 +204,7 @@ button,
 }
 
 .hidden {
-    /* display: none; */
+    display: none;
 }
 
 button {
@@ -240,4 +241,3 @@ button {
         font-size: var(--fs-s);
     }
 }
-

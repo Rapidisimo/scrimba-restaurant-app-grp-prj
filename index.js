@@ -47,18 +47,31 @@ function renderOrder(menuItems) {
     render HTML for "Your Order"
     */
     const orderItems = document.getElementById('order-summary');
+    const cart = document.querySelector('.order-container')
+    if(cart.classList.contains('hidden')) {
+        cart.classList.toggle('hidden')
+    }
     let orderHtml = '';
     menuItems.forEach( menuItem => {
         orderHtml += `
             <div class="item-category">
-                <p class="item-name">${menuItem.name}</p>
-                <!-- <p>(1)</p> --> <!--? Change quantity of items when added/removed?-->
-                <button id="remove-btn">remove</button>
-                <p>$${menuItem.price}</p>
+                <div class="item-info">
+                    <p class="item-name" id="${menuItem.name}">${menuItem.name} ( ${menuItem.quantity} )</p>
+                    <button id="remove-btn">remove</button>
+                </div>
+                <p>$${menuItem.price * menuItem.quantity}</p>
             </div>
             `
     })
     orderItems.innerHTML = orderHtml;
+
+        let itemsTotal = 0;
+        for(let i = 0; i < cartArray.length; i++) {
+            itemsTotal += (cartArray[i].price * cartArray[i].quantity)
+        }
+
+    runningTotal = itemsTotal
+    document.getElementById('total').innerText = `$${runningTotal}`
 }
 
 /****** EVENT LISTENERS ******/
@@ -70,12 +83,15 @@ function renderOrder(menuItems) {
 menuContainer.addEventListener("click", (e) => {
     if(e.target.className === 'add-btn') {
         let item = e.target.dataset.item;
-        cartArray.push(menuArray[item]);
-        console.log(cartArray)
-        // runningTotal += (menuArray[item].price);
+        const updateIndex = cartArray.findIndex((food => food.id == item))
+
+        if(updateIndex > -1) {
+            cartArray[updateIndex].quantity += 1;
+        }else {
+            cartArray.push({...menuArray[item], quantity: 1}); 
+        }
         renderOrder(cartArray);
     }
-
     /*
     If "Your Order" is hidden then unhide it 
     Push menu item clicked to a cartArray 
