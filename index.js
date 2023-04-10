@@ -104,7 +104,7 @@ menuContainer.addEventListener("click", (e) => {
     Call function to build "Your Order" --> renderOrder
     */
 
-// })
+})
 
 
 //TODO TASK #2 - Christina
@@ -118,7 +118,7 @@ tmp.addEventListener("click", function() {
     If there are no items, then hide "Your Order"
     */
 // })
-
+})
 
 completeBtn.addEventListener("click", function() {
    paymentModal.style.display = "block";
