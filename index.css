@@ -145,7 +145,7 @@ main {
 
 /*TODO Cassie added*/
 .payment-modal {
-    display: none;
+    /* display: none; */
     max-width: 525px;
     width: 90%;
     height: 525px;

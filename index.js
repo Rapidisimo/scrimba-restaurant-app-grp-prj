@@ -14,8 +14,6 @@ const paymentModal = document.getElementById("payment-modal");
 //! BTN var close modal
 const tmp = document.querySelector('body') //temporary to remove console errors
 
-//! var cartArray 
-//! var runningTotal 
 let cartArray = [];
 let runningTotal = 0;
 
@@ -44,10 +42,6 @@ function renderMenu() {
 renderMenu()
 
 function renderOrder(menuItems) {
-    //TODO TASK #1 - Josue
-    /*
-    render HTML for "Your Order"
-    */
     const orderItems = document.getElementById('order-summary');
     const cart = document.querySelector('.order-container')
 
@@ -78,11 +72,6 @@ function renderOrder(menuItems) {
 
 /****** EVENT LISTENERS ******/
 
-//?Event delegation?
-
-//TODO TASK #1 - Josue
-//! Listen for click on all menu items "add" button
-
 menuContainer.addEventListener("click", (e) => {
     if(e.target.className === 'add-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
@@ -95,15 +84,6 @@ menuContainer.addEventListener("click", (e) => {
         }
         renderOrder(cartArray);
     }
-
-    /*
-    If "Your Order" is hidden then unhide it 
-    Push menu item clicked to a cartArray 
-    Add item name to "Your Order"
-    Add menu item price to a running total 
-    Call function to build "Your Order" --> renderOrder
-    */
-
 })
 
 
@@ -121,7 +101,11 @@ tmp.addEventListener("click", function() {
 })
 
 completeBtn.addEventListener("click", function() {
-   paymentModal.style.display = "block";
+
+    //    paymentModal.style.display = "block";
+    if(paymentModal.classList.contains('hidden')) { //toggle Payment Modal visible
+        paymentModal.classList.toggle('hidden')
+    }
 
 })
 
