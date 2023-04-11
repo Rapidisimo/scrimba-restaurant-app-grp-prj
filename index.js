@@ -5,6 +5,7 @@ import { menuArray } from "./data.js"
 //! Create variable for menu items section in DOM 
 const menuContainer = document.getElementById("menu-container");
 const completeBtn = document.getElementById("complete-btn");
+const modalCloseBtn = document.getElementById("close-btn");
 
 const paymentModal = document.getElementById("payment-modal");
 //! Buttons we need
@@ -70,6 +71,7 @@ function renderOrder(menuItems) {
     document.getElementById('total').innerText = `$${runningTotal}` //update DOM
 }
 
+
 /****** EVENT LISTENERS ******/
 
 menuContainer.addEventListener("click", (e) => {
@@ -109,13 +111,10 @@ completeBtn.addEventListener("click", function() {
 
 })
 
-//TODO TASK #4 - Cassie
-//! BTN var close modal
-tmp.addEventListener("click", function() {
-    /*
-    close payment modal
-    */
+modalCloseBtn.addEventListener("click", function() {
+    paymentModal.classList.toggle('hidden') //toggle Payment Modal invisible
 })
+
 
 //TODO TASK #5 - Cassie
 //! BTN var pay from modal
