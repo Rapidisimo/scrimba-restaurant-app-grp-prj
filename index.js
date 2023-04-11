@@ -6,6 +6,15 @@ import { menuArray } from "./data.js"
 const menuContainer = document.getElementById("menu-container");
 const completeBtn = document.getElementById("complete-btn");
 const modalCloseBtn = document.getElementById("close-btn");
+const modalPayBtn = document.getElementById("pay-btn");
+const thankYouMsg = document.getElementById("thank-you-msg");
+
+//needed global scope on this variable
+const cart = document.querySelector('.order-container')
+
+const customerName = document.getElementById("customer-name");
+const cardNumber = document.getElementById("card-number");
+const cvv = document.getElementById("cvv");
 
 const paymentModal = document.getElementById("payment-modal");
 //! Buttons we need
@@ -44,7 +53,7 @@ renderMenu()
 
 function renderOrder(menuItems) {
     const orderItems = document.getElementById('order-summary');
-    const cart = document.querySelector('.order-container')
+   
 
     if(cart.classList.contains('hidden')) { //toggle Your Order section visible
         cart.classList.toggle('hidden')
@@ -116,13 +125,44 @@ modalCloseBtn.addEventListener("click", function() {
 })
 
 
-//TODO TASK #5 - Cassie
-//! BTN var pay from modal
-tmp.addEventListener("click", function() {
-    /*
-    close payment modal, display thank you message
-    "Thanks Name! Your order is on its way!"
-    */
+modalPayBtn.addEventListener("click", function() {
+    let name = customerName.value;
+    let message = "";
+
+    //render thank you message
+    message = `
+        <p class="thank-you-msg">
+        Thanks ${name}!
+        Your order is on its way!
+        </p>
+        `
+    //validate user input   
+    if (customerName.value && cardNumber.value && cvv.value) {    
+   
+    paymentModal.classList.toggle('hidden') //toggle Payment Modal invisible
+    cart.classList.toggle('hidden') //toggle Your Order invisible
+    
+    if(thankYouMsg.classList.contains('hidden')) { //toggle thank you msg visible
+        thankYouMsg.classList.toggle('hidden') 
+   
+    thankYouMsg.innerHTML = message; //render thank you msg     
+    
+    //reset Your Order
+    cartArray = [];
+    runningTotal = 0;
+    }}
+
+    //clear input fields
+    customerName.value = "";
+    cardNumber.value = "";
+    cvv.value = "";
+
+    //thank you msg invisible if user starts another order
+    //! new order button?
+    menuContainer.addEventListener("click", (e) => {
+        if(e.target.className === 'add-btn') {
+            thankYouMsg.classList.toggle('hidden') 
+        }})    
 })
 
 

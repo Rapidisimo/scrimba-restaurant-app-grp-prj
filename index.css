@@ -204,7 +204,8 @@ input {
 .thank-you-msg {
     padding: 1.8rem;
     background-color: hsl(152, 81%, 96%);
-    font-size: var(--fs-s);
+    font-size: var(--fs-ml);
+    letter-spacing: .15rem; 
     color: hsl(163, 88%, 20%);
     text-align: center;
 }
