@@ -2,21 +2,25 @@ import { menuArray } from "./data.js"
 
 /****** VARIABLES ******/
 
-//! Create variable for menu items section in DOM 
 const menuContainer = document.getElementById("menu-container");
 const completeBtn = document.getElementById("complete-btn");
-const modalCloseBtn = document.getElementById("close-btn");
-
 const paymentModal = document.getElementById("payment-modal");
-//! Buttons we need
+const modalCloseBtn = document.getElementById("close-btn");
+const modalPayBtn = document.getElementById("pay-btn");
+const thankYouMsg = document.getElementById("thank-you-msg");
 
-//! BTN var remove menu item
-//! BTN var pay from modal
-//! BTN var close modal
+//needed global scope on this variable
+const cart = document.querySelector('.order-container')
+
+const customerName = document.getElementById("customer-name");
+const cardNumber = document.getElementById("card-number");
+const cvv = document.getElementById("cvv");
+
 const tmp = document.querySelector('body') //temporary to remove console errors
 
 let cartArray = [];
 let runningTotal = 0;
+
 
 /****** FUNCTIONS ******/
 
@@ -44,8 +48,7 @@ renderMenu()
 
 function renderOrder(menuItems) {
     const orderItems = document.getElementById('order-summary');
-    const cart = document.querySelector('.order-container')
-
+   
     if(cart.classList.contains('hidden')) { //toggle Your Order section visible
         cart.classList.toggle('hidden')
     }
@@ -69,6 +72,47 @@ function renderOrder(menuItems) {
     }
     runningTotal = itemsTotal //update global variable
     document.getElementById('total').innerText = `$${runningTotal}` //update DOM
+}
+
+
+function completeOrder() {
+    let name = customerName.value;
+    let message = "";
+
+    //render thank you message
+    message = `
+        <p class="thank-you-msg">
+        Thanks ${name}!
+        Your order is on its way!
+        </p>
+        `
+    //validate user input   
+    if (customerName.value && cardNumber.value && cvv.value) {    
+   
+    paymentModal.classList.toggle('hidden'); //toggle Payment Modal invisible
+    cart.classList.toggle('hidden'); //toggle Your Order invisible
+    
+    if(thankYouMsg.classList.contains('hidden')) { //toggle thank you msg visible
+        thankYouMsg.classList.toggle('hidden');
+   
+    thankYouMsg.innerHTML = message; //render thank you msg     
+    
+    //reset Your Order
+    cartArray = [];
+    runningTotal = 0;
+    }}
+
+    //clear input fields
+    customerName.value = "";
+    cardNumber.value = "";
+    cvv.value = "";
+
+    //thank you msg invisible if user starts another order
+    //! new order button?
+    menuContainer.addEventListener("click", (e) => {
+        if(e.target.className === 'add-btn') {
+            thankYouMsg.classList.toggle('hidden'); 
+        }})
 }
 
 
@@ -106,24 +150,18 @@ completeBtn.addEventListener("click", function() {
 
     //    paymentModal.style.display = "block";
     if(paymentModal.classList.contains('hidden')) { //toggle Payment Modal visible
-        paymentModal.classList.toggle('hidden')
-    }
-
-})
+        paymentModal.classList.toggle('hidden');
+    };
+});
 
 modalCloseBtn.addEventListener("click", function() {
-    paymentModal.classList.toggle('hidden') //toggle Payment Modal invisible
-})
+    paymentModal.classList.toggle('hidden'); //toggle Payment Modal invisible
+});
 
 
-//TODO TASK #5 - Cassie
-//! BTN var pay from modal
-tmp.addEventListener("click", function() {
-    /*
-    close payment modal, display thank you message
-    "Thanks Name! Your order is on its way!"
-    */
-})
+modalPayBtn.addEventListener("click", function() {
+   completeOrder();  
+});
 
 
 //TODO TASK #6
