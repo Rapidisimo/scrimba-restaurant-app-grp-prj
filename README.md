@@ -71,11 +71,12 @@ Stretch goals:
 ### Continued development
 
 
+
 ### Useful resources
 
 -[Scrimba help](https://projects.scrimba.com/restaurant-menu)
 
--[Codepen for star rating](https://codepen.io/neilpomerleau/pen/wzxzQM )
+-[Star rating tutorial](https://dev.to/leonardoschmittk/how-to-make-a-star-rating-with-js-36d3)
 
 
 ## Author

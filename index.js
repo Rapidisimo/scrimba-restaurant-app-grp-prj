@@ -102,6 +102,7 @@ function completeOrder() {
     runningTotal = 0;
     }}
 
+    //! Do input fields clear automatically because of type "submit"?
     //clear input fields
     customerName.value = "";
     cardNumber.value = "";
@@ -164,6 +165,10 @@ modalPayBtn.addEventListener("click", function() {
 });
 
 
+
+
+
+
 //TODO TASK #6
 //! STRETCH GOAL - meal discount
     /* add logic to discount meal under certain conditions*/
@@ -175,3 +180,30 @@ modalPayBtn.addEventListener("click", function() {
     idea: radio inputs as stars
     added idea link to HTML 
     */
+
+
+/* Remaining tasks
+
+Decrement button in menu
+Remove all button in "your order"
+
+Accessibility - hover states
+
+Stretch goal - meal discount
+Buy two items get 15% off 
+
+Stretch goal - star rating
+Cassie will implement from other files
+New order button  
+
+
+
+Code cleanup
+
+Live site
+
+Accessibility check
+
+README update?
+
+*/ 
