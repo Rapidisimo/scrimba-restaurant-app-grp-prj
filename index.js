@@ -7,7 +7,10 @@ const completeBtn = document.getElementById("complete-btn");
 const paymentModal = document.getElementById("payment-modal");
 const modalCloseBtn = document.getElementById("close-btn");
 const modalPayBtn = document.getElementById("pay-btn");
-const thankYouMsg = document.getElementById("thank-you-msg");
+const thankYouModal = document.getElementById("thank-you-modal");
+const ratingModal = document.getElementById("rating-modal");
+const newOrderBtn = document.getElementById("new-order-btn");
+
 
 //needed global scope on this variable
 const cart = document.querySelector('.order-container')
@@ -20,6 +23,8 @@ const tmp = document.querySelector('body') //temporary to remove console errors
 
 let cartArray = [];
 let runningTotal = 0;
+let message = "";
+const ratingStars = [...document.getElementsByClassName("rating-star")]
 
 
 /****** FUNCTIONS ******/
@@ -75,46 +80,87 @@ function renderOrder(menuItems) {
 }
 
 
-function completeOrder() {
+function renderThankYouMsg() {
     let name = customerName.value;
-    let message = "";
+ 
+   //render thank you message
+   message = `
+    <div class="thank-you-msg">
+      <p class="message">Thanks ${name}!</p>
+      <p class="message">Your order is on its way!</p>
+    </div>`
+}
 
-    //render thank you message
-    message = `
-        <p class="thank-you-msg">
-        Thanks ${name}!
-        Your order is on its way!
-        </p>
-        `
+function completeOrder() {
+    
+    renderThankYouMsg()
+
     //validate user input   
     if (customerName.value && cardNumber.value && cvv.value) {    
    
     paymentModal.classList.toggle('hidden'); //toggle Payment Modal invisible
     cart.classList.toggle('hidden'); //toggle Your Order invisible
     
-    if(thankYouMsg.classList.contains('hidden')) { //toggle thank you msg visible
-        thankYouMsg.classList.toggle('hidden');
+    if(thankYouModal.classList.contains('hidden')) { //toggle thank you modal visible
+        thankYouModal.classList.toggle('hidden');
    
-    thankYouMsg.innerHTML = message; //render thank you msg     
+        thankYouModal.innerHTML = message; //render thank you msg     
+    }}
+
+    if (ratingModal.classList.contains('hidden')) { //toggle rating modal visible
+        ratingModal.classList.toggle('hidden');
+    }
+
+    resetOrder()
+}
+
+
+function resetOrder() {
     
     //reset Your Order
     cartArray = [];
     runningTotal = 0;
-    }}
 
     //! Do input fields clear automatically because of type "submit"?
-    //clear input fields
+    // clear input fields
     customerName.value = "";
     cardNumber.value = "";
     cvv.value = "";
 
-    //thank you msg invisible if user starts another order
-    //! new order button?
+    //thank you and rating modals invisible if user clicks one of the add buttons to start a new order
     menuContainer.addEventListener("click", (e) => {
         if(e.target.className === 'add-btn') {
-            thankYouMsg.classList.toggle('hidden'); 
+            thankYouModal.classList.add('hidden'); 
+            ratingModal.classList.add('hidden');
         }})
+
 }
+
+
+function renderRating(stars) {
+    const starClassActive = "rating-star fa-solid fa-star fa-lg" //solid star
+    const starClassInactive = "rating-star fa-regular fa-star fa-lg" //regular star
+    const starsLength = stars.length //length of array
+
+    stars.map(star => {
+        star.addEventListener("click", function() { //check for clicks on each star
+            let index = stars.indexOf(star); //index receives the index of each star clicked
+        
+            if (star.className === starClassInactive) { //if the star that is clicked is "not filled"
+            for (index; index >= 0; index--) {
+                stars[index].className = starClassActive //fills all stars before clicked star
+            }
+            } else { //star clicked is "filled"
+            for (index; index < starsLength; index++) {
+                stars[index].className = starClassInactive //all stars above clicked star will be "not filled"
+            }
+            }
+
+        })
+    })
+}
+
+renderRating(ratingStars)
 
 
 /****** EVENT LISTENERS ******/
@@ -148,42 +194,32 @@ tmp.addEventListener("click", function() {
 })
 
 completeBtn.addEventListener("click", function() {
-
-    //    paymentModal.style.display = "block";
     if(paymentModal.classList.contains('hidden')) { //toggle Payment Modal visible
         paymentModal.classList.toggle('hidden');
-    };
-});
+    }
+
+})
 
 modalCloseBtn.addEventListener("click", function() {
     paymentModal.classList.toggle('hidden'); //toggle Payment Modal invisible
-});
+})
 
 
 modalPayBtn.addEventListener("click", function() {
    completeOrder();  
-});
+})
+
+newOrderBtn.addEventListener("click", function() {
+    thankYouModal.classList.toggle('hidden');
+    ratingModal.classList.toggle('hidden');
+})
 
 
 
 
 
-
-//TODO TASK #6
-//! STRETCH GOAL - meal discount
-    /* add logic to discount meal under certain conditions*/
-
-//TODO TASK #7
-//! STRETCH GOAL - rate experience, 0 - 5 stars
-    /* 
-    add to thank you message
-    idea: radio inputs as stars
-    added idea link to HTML 
-    */
-
-
-/* Remaining tasks
-
+//TODO Remaining tasks
+/*
 Decrement button in menu
 Remove all button in "your order"
 
@@ -195,8 +231,6 @@ Buy two items get 15% off
 Stretch goal - star rating
 Cassie will implement from other files
 New order button  
-
-
 
 Code cleanup
 
