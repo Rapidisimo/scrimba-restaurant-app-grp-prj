@@ -54,7 +54,7 @@ renderMenu()
 function renderOrder(menuItems) {
     const orderItems = document.getElementById('order-summary');
    
-    if(cart.classList.contains('hidden')) { //toggle Your Order section visible
+    if(cart.classList.contains('hidden') || cartArray.length === 0) { //toggle Your Order section visible
         cart.classList.toggle('hidden')
     }
     let orderHtml = ''; //go through each item in the array and build out the Your Order section
@@ -63,7 +63,7 @@ function renderOrder(menuItems) {
             <div class="item-category">
                 <div class="item-info">
                     <p class="item-name" id="${menuItem.name}">${menuItem.name} ( ${menuItem.quantity} )</p>
-                    <button id="remove-btn">remove all</button>
+                    <button class="remove-btn" data-item="${menuItem.id}">remove all</button>
                 </div>
                 <p>$${menuItem.price * menuItem.quantity}</p>
             </div>
@@ -77,6 +77,19 @@ function renderOrder(menuItems) {
     }
     runningTotal = itemsTotal //update global variable
     document.getElementById('total').innerText = `$${runningTotal}` //update DOM
+
+    const removeBtns = document.querySelectorAll('.remove-btn')
+    removeBtns.forEach( btn => {
+        btn.addEventListener('click', (e) => {
+            if(e.target.classList.contains('remove-btn')) {
+                let item = e.target.dataset.item;
+                cartArray = cartArray.filter((food => food.id !== item))
+                console.log(cartArray)
+                renderOrder(cartArray)
+            }
+        })
+    
+    })
 }
 
 
