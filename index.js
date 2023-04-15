@@ -58,7 +58,7 @@ function renderOrder(menuItems) {
             <div class="item-category">
                 <div class="item-info">
                     <p class="item-name" id="${menuItem.name}">${menuItem.name} ( ${menuItem.quantity} )</p>
-                    <button id="remove-btn">remove</button>
+                    <button id="remove-btn">remove all</button>
                 </div>
                 <p>$${menuItem.price * menuItem.quantity}</p>
             </div>
