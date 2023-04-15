@@ -130,7 +130,8 @@ main {
 }
 
 .order-container #complete-btn,
-.inner-payment-modal .order-btn {
+.inner-payment-modal .order-btn,
+.new-order-btn {
     background-color: hsl(160, 82%, 47%);
     color: white;
     width: 100%;
@@ -211,16 +212,46 @@ input {
     border-radius: var(--br-reg);
 }
 
-/******* Thank You Message *******/
+/******* Thank You Message and Star Rating *******/
 
 /* This is missing a heading or p element */
-.thank-you-msg {
-    padding: 1.8rem;
+
+.thank-you-modal,
+.rating-modal {
+    padding: 1.8rem 1.8rem .5rem 1.8rem;
     background-color: hsl(152, 81%, 96%);
-    font-size: var(--fs-ml);
     letter-spacing: .15rem; 
     color: hsl(163, 88%, 20%);
     text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.rating-modal {
+    padding-bottom: 2rem;
+}
+
+.message,
+.feedback {
+    margin: 0;
+    margin-bottom: .5rem;
+}
+  
+.message {
+    font-size: var(--fs-ml);
+    font-weight: 600;
+}
+  
+.feedback {
+    font-size: 1.25rem;
+}
+  
+.rating-star {
+    border: none;
+    background-color: hsl(152, 81%, 96%);
+    cursor: pointer;
+    color: rgb(255, 208, 0);
+    padding: 2rem 0;
 }
 
 /******* Misc *******/

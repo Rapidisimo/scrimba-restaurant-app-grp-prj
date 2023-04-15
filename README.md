@@ -70,6 +70,7 @@ Stretch goals:
 
 ### Continued development
 
+-tab index
 
 
 ### Useful resources
@@ -77,6 +78,8 @@ Stretch goals:
 -[Scrimba help](https://projects.scrimba.com/restaurant-menu)
 
 -[Star rating tutorial](https://dev.to/leonardoschmittk/how-to-make-a-star-rating-with-js-36d3)
+
+[Font awesome accessibility](https://fontawesome.com/docs/web/dig-deeper/accessibility#making-icons-accessible-manually)
 
 
 ## Author
