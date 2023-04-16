@@ -147,6 +147,7 @@ function resetOrder() {
     //reset Your Order
     cartArray = [];
     runningTotal = 0;
+    renderMenu();
 
     //! Do input fields clear automatically because of type "submit"?
     // clear input fields
