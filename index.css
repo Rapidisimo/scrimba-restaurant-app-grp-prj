@@ -47,7 +47,7 @@ main {
 
 .menu-item {
     display: grid;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 70% 15% 15%;
     margin-bottom: 1rem;
     padding-bottom: .2em;
     border-bottom: 1px solid hsl(0, 0%, 82%);
@@ -70,7 +70,8 @@ main {
     color: var(--fc-h);
 }
 
-.add-btn {
+.add-btn,
+.remove-btn {
     border-radius: var(--br-round);
     font-size: var(--fs-xs);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -86,6 +87,9 @@ main {
 
 .add-btn:hover {
     border: 2px solid hsl(110, 36%, 51%);
+}
+.remove-btn:hover {
+    border: 2px solid hsl(0, 58%, 51%);
 }
 
 .order-container h2 {
@@ -112,15 +116,15 @@ main {
     margin: 0;
 }
 
-#remove-btn {
+.remove-all-btn {
     background-color: transparent;
     color: hsl(0, 0%, 37%);
     margin-right: auto;
     font-size: .8rem;
 }
 
-#remove-btn:hover {
-    color: hsl(0, 58%, 37%);
+.remove-all-btn:hover {
+    color: hsl(0, 58%, 51%);
 }
 
 .total-price {
@@ -305,7 +309,8 @@ button {
     main {
         margin: 0 auto;
     }
-    .add-btn {
+    .add-btn,
+    .remove-btn {
         border-radius: var(--br-round);
         font-size: var(--fs-s);
         width: 2.8rem;
@@ -315,6 +320,11 @@ button {
     p {
         font-size: var(--fs-s);
     }
+
+    .menu-item {
+        grid-template-columns: 80% 10% 10%;
+    }
+    
 }
 
 /*TODO Cassie added */

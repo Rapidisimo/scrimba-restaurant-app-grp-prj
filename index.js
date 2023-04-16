@@ -11,15 +11,12 @@ const thankYouModal = document.getElementById("thank-you-modal");
 const ratingModal = document.getElementById("rating-modal");
 const newOrderBtn = document.getElementById("new-order-btn");
 
-
 //needed global scope on this variable
 const cart = document.querySelector('.order-container')
 
 const customerName = document.getElementById("customer-name");
 const cardNumber = document.getElementById("card-number");
 const cvv = document.getElementById("cvv");
-
-const tmp = document.querySelector('body') //temporary to remove console errors
 
 let cartArray = [];
 let runningTotal = 0;
@@ -44,6 +41,7 @@ function renderMenu() {
             </div>
           </div>
           <button class="add-btn" data-item="${item.id}">+</button>
+          <button class="remove-btn hidden" data-item="${item.id}">-</button>
         </div>`
     })
     menuContainer.innerHTML = menuFeed; 
@@ -51,11 +49,28 @@ function renderMenu() {
 
 renderMenu()
 
-function renderOrder(menuItems) {
+function removeItem(id) { //individually enable (-) button based on id of item added to order/cart
+    const removeBtn = document.querySelectorAll('.remove-btn');
+    removeBtn.forEach( function(minusBtn) {
+        if(minusBtn.classList.contains('hidden') && id === minusBtn.dataset.item) {
+            minusBtn.classList.toggle('hidden')
+        }
+    })
+}
+
+function removeMinusBtn(id) { //if you remove all of the same type of item this remove the minus btn
+    const removeBtn = document.querySelectorAll('.remove-btn');
+    removeBtn.forEach( function(minusBtn) {
+        if(id === minusBtn.dataset.item) {
+            minusBtn.classList.toggle('hidden')
+        }
+    })
+}
+
+function renderOrder(menuItems) {//Your Order section 
     const orderItems = document.getElementById('order-summary');
-   
-    if(cart.classList.contains('hidden')) { //toggle Your Order section visible
-        cart.classList.toggle('hidden')
+    if(cart.classList.contains('hidden') || cartArray.length === 0) { //toggle Your Order section visible
+        cart.classList.toggle('hidden');
     }
     let orderHtml = ''; //go through each item in the array and build out the Your Order section
     menuItems.forEach( menuItem => {
@@ -63,11 +78,12 @@ function renderOrder(menuItems) {
             <div class="item-category">
                 <div class="item-info">
                     <p class="item-name" id="${menuItem.name}">${menuItem.name} ( ${menuItem.quantity} )</p>
-                    <button id="remove-btn">remove all</button>
+                    <button class="remove-all-btn" data-item="${menuItem.id}">remove all</button>
                 </div>
                 <p>$${menuItem.price * menuItem.quantity}</p>
             </div>
             `
+            removeItem(menuItem.id) //call function to enable (-) button as items are added to Your Order/cart
     })
     orderItems.innerHTML = orderHtml; //update DOM
 
@@ -77,8 +93,19 @@ function renderOrder(menuItems) {
     }
     runningTotal = itemsTotal //update global variable
     document.getElementById('total').innerText = `$${runningTotal}` //update DOM
-}
 
+    const removeBtns = document.querySelectorAll('.remove-all-btn')
+    removeBtns.forEach( btn => {
+        btn.addEventListener('click', (e) => { //listener to remove all items of the same type and update order
+            if(e.target.classList.contains('remove-all-btn')) {
+                let item = e.target.dataset.item;
+                cartArray = cartArray.filter((food => food.id !== item))
+                removeMinusBtn(item)
+                renderOrder(cartArray)
+            }
+        })
+    })
+}
 
 function renderThankYouMsg() {
     let name = customerName.value;
@@ -170,34 +197,29 @@ menuContainer.addEventListener("click", (e) => {
         let item = e.target.dataset.item; //get an id for what was clicked
         const updateIndex = cartArray.findIndex((food => food.id == item)) //array method to find an item
 
-        if(updateIndex > -1) { //if the item is already in the array increase it's quantity
+        if(updateIndex > -1) { //if the item is already in the array increase its quantity
             cartArray[updateIndex].quantity += 1;
         }else {
             cartArray.push({...menuArray[item], quantity: 1}); //if the item is not in the array add it and the quantity property
         }
         renderOrder(cartArray);
+    }else if(e.target.className === 'remove-btn') {
+        let item = e.target.dataset.item; //get an id for what was clicked
+        const updateIndex = cartArray.findIndex((food => food.id == item)) //array method to find an item
+        cartArray[updateIndex].quantity -= 1; //reduce item count
+        renderOrder(cartArray);
+        if(cartArray[updateIndex].quantity === 0) { //if item is at 0 remove it from array
+            cartArray = cartArray.filter((food => food.id !== item))
+            e.target.classList.toggle('hidden')//hide (-) button because quantity is 0
+            renderOrder(cartArray);
+        }
     }
-})
-
-
-//TODO TASK #2 - Christina
-//! BTN var remove menu item
-
-tmp.addEventListener("click", function() {
-
-    /*
-    Remove item from "Your Order"
-    Calculate / subtract running total
-    If there are no items, then hide "Your Order"
-    */
-// })
 })
 
 completeBtn.addEventListener("click", function() {
     if(paymentModal.classList.contains('hidden')) { //toggle Payment Modal visible
         paymentModal.classList.toggle('hidden');
     }
-
 })
 
 modalCloseBtn.addEventListener("click", function() {
