@@ -35,7 +35,7 @@ function renderMenu() {
             <div>
               <h2 class="menu-item-name">${item.name}</h2>
               <p class="menu-item-ingredients">
-                ${item.ingredients}
+                ${item.ingredients} 
               </p>
               <p class="menu-item-price">$${item.price}</p>
             </div>
