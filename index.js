@@ -112,12 +112,10 @@ function renderOrder(menuItems) {//Your Order section
 function renderMealDiscount(arr) {
        
     if (arr.length <= 1) {
-       console.log("it's less than or equal to 1!!!")
         discountModal.classList.add('hidden')
         document.getElementById('total').innerText = `$${runningTotal}`
 
-    } else if (arr.length >= 2) {
-        console.log("it's greater than or equal to 2!!!")
+    } else if (arr.length >= 2)  {
         discountModal.classList.remove('hidden')
         let discount = (runningTotal * 0.15).toFixed(2)
         let discountAmt = (runningTotal - discount).toFixed(2)
@@ -126,6 +124,7 @@ function renderMealDiscount(arr) {
         document.getElementById('total').innerText = `$${discountAmt}`
 
     }
+
 }
 
 
@@ -218,15 +217,17 @@ menuContainer.addEventListener("click", (e) => {
     if(e.target.className === 'add-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
         const updateIndex = cartArray.findIndex((food => food.id == item)) //array method to find an item
-
+//! LOOK AT THIS LOGIC TO FIX DISCOUNT PROBLEM
         if(updateIndex > -1) { //if the item is already in the array increase its quantity
             cartArray[updateIndex].quantity += 1;
+          
         }else {
             cartArray.push({...menuArray[item], quantity: 1}); //if the item is not in the array add it and the quantity property
         }
         renderOrder(cartArray);
         renderMealDiscount(cartArray)
-
+    
+    console.log(cartArray.length)
       
     } else if(e.target.className === 'remove-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
@@ -242,6 +243,8 @@ menuContainer.addEventListener("click", (e) => {
             renderMealDiscount(cartArray);
             
         }
+
+        console.log(cartArray.length)
 
    
     }
