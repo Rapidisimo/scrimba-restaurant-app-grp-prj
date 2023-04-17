@@ -10,6 +10,7 @@ const modalPayBtn = document.getElementById("pay-btn");
 const thankYouModal = document.getElementById("thank-you-modal");
 const ratingModal = document.getElementById("rating-modal");
 const newOrderBtn = document.getElementById("new-order-btn");
+const discountModal = document.getElementById("discount-modal")
 
 //needed global scope on this variable
 const cart = document.querySelector('.order-container')
@@ -102,10 +103,31 @@ function renderOrder(menuItems) {//Your Order section
                 cartArray = cartArray.filter((food => food.id !== item))
                 removeMinusBtn(item)
                 renderOrder(cartArray)
+                renderMealDiscount(cartArray)
             }
         })
     })
 }
+
+function renderMealDiscount(arr) {
+       
+    if (arr.length <= 1) {
+       console.log("it's less than or equal to 1!!!")
+        discountModal.classList.add('hidden')
+        document.getElementById('total').innerText = `$${runningTotal}`
+
+    } else if (arr.length >= 2) {
+        console.log("it's greater than or equal to 2!!!")
+        discountModal.classList.remove('hidden')
+        let discount = (runningTotal * 0.15).toFixed(2)
+        let discountAmt = (runningTotal - discount).toFixed(2)
+    
+        document.getElementById('discount').innerText = `-$${discount}`
+        document.getElementById('total').innerText = `$${discountAmt}`
+
+    }
+}
+
 
 function renderThankYouMsg() {
     let name = customerName.value;
@@ -203,16 +225,25 @@ menuContainer.addEventListener("click", (e) => {
             cartArray.push({...menuArray[item], quantity: 1}); //if the item is not in the array add it and the quantity property
         }
         renderOrder(cartArray);
-    }else if(e.target.className === 'remove-btn') {
+        renderMealDiscount(cartArray)
+
+      
+    } else if(e.target.className === 'remove-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
         const updateIndex = cartArray.findIndex((food => food.id == item)) //array method to find an item
         cartArray[updateIndex].quantity -= 1; //reduce item count
         renderOrder(cartArray);
+        renderMealDiscount(cartArray);
+
         if(cartArray[updateIndex].quantity === 0) { //if item is at 0 remove it from array
             cartArray = cartArray.filter((food => food.id !== item))
             e.target.classList.toggle('hidden')//hide (-) button because quantity is 0
             renderOrder(cartArray);
+            renderMealDiscount(cartArray);
+            
         }
+
+   
     }
 })
 

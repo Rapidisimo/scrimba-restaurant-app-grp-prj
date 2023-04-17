@@ -216,6 +216,19 @@ input {
     border-radius: var(--br-reg);
 }
 
+/****** Discount Modal ******/
+
+.discount-modal {
+    background-color: lightyellow;
+    margin: 1rem 0;
+    padding: .5rem .25rem;
+    border: 2px solid lightgray;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
 /******* Thank You Message and Star Rating *******/
 
 /* This is missing a heading or p element */
