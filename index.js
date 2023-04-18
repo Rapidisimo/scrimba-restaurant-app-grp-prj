@@ -38,13 +38,11 @@ function renderMenu() {
             <div>
               <h2 class="menu-item-name">${item.name}</h2>
               <p class="menu-item-ingredients">
-                ${item.ingredients} 
+                ${item.ingredients.join(', ')} 
               </p>
               <p class="menu-item-price">$${item.price}</p>
             </div>
           </div>
-          <button class="add-btn" data-item="${item.id}">+</button>
-          <button class="remove-btn hidden" data-item="${item.id}">-</button>
         </div>`
     });
     menuContainer.innerHTML = menuFeed; 
