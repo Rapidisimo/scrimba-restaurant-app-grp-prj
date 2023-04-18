@@ -38,16 +38,22 @@
 
 body {
     letter-spacing: .15rem;
+    background-color: whitesmoke;
 }
 
 header img {
     width: 100%;
+    border-bottom-left-radius: var(--br-reg);
+    border-bottom-right-radius: var(--br-reg);
 }
 
 main {
     max-width: 600px;
     min-width: 320px;
+    background-color: white;
     padding: 1rem 1.4rem 1rem;
+    border-bottom-left-radius: var(--br-reg);
+    border-bottom-right-radius: var(--br-reg);
 }
 
 .menu-item {
