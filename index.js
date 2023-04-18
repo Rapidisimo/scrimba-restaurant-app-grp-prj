@@ -32,19 +32,22 @@ const ratingStars = [...document.getElementsByClassName("rating-star")];
 function renderMenu() {
     let menuFeed = ""
     menuArray.forEach(function(item) {
-        menuFeed += ` <div class="menu-item">
-          <div class="menu-item-details">
-            <span class="menu-item-emoji">${item.emoji}</span>
-            <div>
-              <h2 class="menu-item-name">${item.name}</h2>
-              <p class="menu-item-ingredients">
-                ${item.ingredients} 
-              </p>
-              <p class="menu-item-price">$${item.price}</p>
+        menuFeed += `
+            <div class="menu-item">
+                <div class="menu-item-details">
+                    <span class="menu-item-emoji">${item.emoji}</span>
+                    <div>
+                        <h2 class="menu-item-name">${item.name}</h2>
+                        <p class="menu-item-ingredients">
+                            ${item.ingredients.join(', ')} 
+                        </p>
+                        <p class="menu-item-price">$${item.price}</p>
+                    </div>
+                </div>
+                <button class="add-btn" aria-label="add one item" data-item="${item.id}">+</button>
+                <button class="remove-btn hidden" aria-label="subtract one item" data-item="${item.id}">-</button>      
             </div>
           </div>
-          <button class="add-btn" data-item="${item.id}">+</button>
-          <button class="remove-btn hidden" data-item="${item.id}">-</button>
         </div>`
     });
     menuContainer.innerHTML = menuFeed; 
