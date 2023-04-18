@@ -82,14 +82,15 @@ Stretch goals:
 [Font awesome accessibility](https://fontawesome.com/docs/web/dig-deeper/accessibility#making-icons-accessible-manually)
 
 
-## Author
+## Authors
 
-Christina
-Josue
-
+C Lewis
 - Website - [C Lewis](https://www.clewisdev.com)
 - LinkedIn - [LinkedIn](https://www.linkedin.com/in/clewisdev/)
 
+Josue - Website: [Josue.me](https://josue.me) 
+ 
+Christina - GitHub Profile [codercreative](https://github.com/codercreative) 
 
 ## Acknowledgments
 
