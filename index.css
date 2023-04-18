@@ -33,6 +33,7 @@
     font-family: 'Smythe', cursive;
 }
 
+
 /******* Layout *******/
 
 body {
@@ -166,9 +167,7 @@ main {
 
 /******* Payment Modal *******/
 
-/*TODO Cassie added*/
 .payment-modal {
-    /* display: none; */
     max-width: 525px;
     width: 90%;
     height: 525px;
@@ -183,8 +182,7 @@ main {
     box-shadow: 0 20px 150px 150px gray;
 }
 
-/* No class provided to target this */
-.payment-modal div:first-of-type {
+.close-btn-container{
     display: flex;
     justify-content: flex-end;
 }
@@ -203,7 +201,6 @@ main {
     margin-bottom: 1.6rem;
 }
 
-/*TODO Cassie changed to flex to center items */
 .inner-payment-modal form {
     display: flex;
     flex-direction: column;
@@ -212,14 +209,15 @@ main {
 }
 
 input {
-    width: 100%; /*TODO Cassie added*/
+    width: 100%; 
     font-size: var(--fs-s);
-    color: rgba(117, 117, 117, 1); /*TODO Cassie added*/
+    color: rgba(117, 117, 117, 1); 
     padding: 1em;
     margin-bottom: 1em;
     border: 1.2px solid rgb(156, 156, 156);
     border-radius: var(--br-reg);
 }
+
 
 /****** Discount Modal ******/
 
@@ -243,8 +241,6 @@ input {
 
 
 /******* Thank You Message and Star Rating *******/
-
-/* This is missing a heading or p element */
 
 .thank-you-modal,
 .rating-modal {
@@ -324,6 +320,10 @@ button {
     cursor: pointer;
 }
 
+button:focus {
+    transform: scale(0.90);
+}
+
 @media (min-width: 600px) {
     header {
         display: flex;
@@ -353,7 +353,6 @@ button {
     
 }
 
-/*TODO Cassie added */
 /****** REMOVE NUMBER SPINNER FROM INPUTS ******/
 
 /* Chrome, Safari, Edge, Opera */
