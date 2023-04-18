@@ -218,11 +218,19 @@ input {
 
 /****** Discount Modal ******/
 
+.discount-info {
+    color: hsl(160, 77%, 36%);
+    font-size: var(--fs-m);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .discount-modal {
     background-color: lightyellow;
     margin: 1rem 0;
     padding: .5rem .25rem;
     border: 2px solid lightgray;
+    border-radius: var(--br-reg);
 
     display: flex;
     justify-content: space-between;

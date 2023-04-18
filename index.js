@@ -110,21 +110,53 @@ function renderOrder(menuItems) {//Your Order section
 }
 
 function renderMealDiscount(arr) {
-       
-    if (arr.length <= 1) {
-        discountModal.classList.add('hidden')
-        document.getElementById('total').innerText = `$${runningTotal}`
 
-    } else if (arr.length >= 2)  {
-        discountModal.classList.remove('hidden')
+//! CASSIE'S ORIGINAL SPAGHETTI    
+//     if (arr.length <= 1) {
+//         discountModal.classList.add('hidden')
+//         document.getElementById('total').innerText = `$${runningTotal}`
+
+//     } else if (arr.length >= 2)  {
+//         discountModal.classList.remove('hidden')
+//         let discount = (runningTotal * 0.15).toFixed(2)
+//         let discountAmt = (runningTotal - discount).toFixed(2)
+    
+//         document.getElementById('discount').innerText = `-$${discount}`
+//         document.getElementById('total').innerText = `$${discountAmt}`
+    
+//     } 
+
+//         cartArray.filter(function(item) {
+//         if (item.quantity > 1) {
+//         discountModal.classList.remove('hidden')
+//         let discount = (runningTotal * 0.15).toFixed(2)
+//         let discountAmt = (runningTotal - discount).toFixed(2)
+
+//         document.getElementById('discount').innerText = `-$${discount}`
+//         document.getElementById('total').innerText = `$${discountAmt}`
+//             }
+//     })
+
+// }
+
+//! CHAT GPT SUGGESTIONS TO CLEAN UP SPAGHETTI
+
+    // variable stores an or conditional as well as using the .some method to see if at least one item in the array is greater than 1
+    let showDiscount = arr.length >= 2 || cartArray.some(item => item.quantity > 1)
+    
+    //if conditionals are true show modal, create and display discount
+    if (showDiscount) {
         let discount = (runningTotal * 0.15).toFixed(2)
         let discountAmt = (runningTotal - discount).toFixed(2)
-    
+        discountModal.classList.remove('hidden')
         document.getElementById('discount').innerText = `-$${discount}`
         document.getElementById('total').innerText = `$${discountAmt}`
 
+    // otherwise hide the discount modal and use unmodified running total    
+    } else {
+        discountModal.classList.add('hidden')
+        document.getElementById('total').innerText = `$${runningTotal}`
     }
-
 }
 
 
@@ -217,17 +249,14 @@ menuContainer.addEventListener("click", (e) => {
     if(e.target.className === 'add-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
         const updateIndex = cartArray.findIndex((food => food.id == item)) //array method to find an item
-//! LOOK AT THIS LOGIC TO FIX DISCOUNT PROBLEM
         if(updateIndex > -1) { //if the item is already in the array increase its quantity
             cartArray[updateIndex].quantity += 1;
-          
         }else {
             cartArray.push({...menuArray[item], quantity: 1}); //if the item is not in the array add it and the quantity property
         }
         renderOrder(cartArray);
         renderMealDiscount(cartArray)
     
-    console.log(cartArray.length)
       
     } else if(e.target.className === 'remove-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
@@ -243,10 +272,6 @@ menuContainer.addEventListener("click", (e) => {
             renderMealDiscount(cartArray);
             
         }
-
-        console.log(cartArray.length)
-
-   
     }
 })
 
