@@ -214,7 +214,6 @@ function resetOrder() {
             thankYouModal.classList.add('hidden'); 
             ratingModal.classList.add('hidden');
         }})
-
 }
 
 

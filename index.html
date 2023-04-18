@@ -14,9 +14,11 @@
     
     <!--CSS STYLESHEET-->
     <link rel="stylesheet" href="index.css" />
+  
   </head>
 
   <body>
+  
     <header>
       <img src="./images/header.png" 
         alt="Image of a hamburger with the words Jimmy's Diner, the best burgers and pizzas in town" />
@@ -25,48 +27,19 @@
     <main>
       
       <section class="menu-container" id="menu-container">
-        
-        <!-- --below to be moved to JS file-- -->
-        <!-- <div class="menu-item">
-          
-          <div class="menu-item-details">
-            <span class="menu-item-emoji">🍕</span>
-              
-            <div>
-                <h2 class="menu-item-name">Pizza</h2>
-                <p class="menu-item-ingredients">
-                pepperoni, mushrooms, mozzarella
-                </p>
-                <p class="menu-item-price">$14</p>
-            </div>
-          
-          </div>
-          
-          <button class="add-btn">+</button>
-        
-        </div> -->
-        <!-- --above to be moved to JS file-- -->
-      
+     
       </section>
 
       <p class="discount-info">Buy two or more items, get 15% off your order!</p>
 
-      <!-- Order container -->
       <section class="order-container hidden">
     
         <h2>Your Order</h2>
       
-        <!-- --below to be moved to JS file-- -->
         <div id="order-summary">
           <p>Pizza</p> 
-          
-          <!-- <p>(1)</p> --> <!--? Change quantity of items when added/removed?-->
-
-          <button id="remove-btn">remove</button>
-          
           <p>$14</p>
         </div>
-        <!-- --above to be moved to JS file-- -->
         
         <div class="discount-modal hidden" id="discount-modal">
           <p class="discount">Discount</p>
@@ -82,7 +55,6 @@
       
       </section>
 
-      <!-- Payment modal -->
       <section class="payment-modal hidden" id="payment-modal">
       
         <div>
@@ -123,7 +95,6 @@
       </section>
 
       <section class="thank-you-modal hidden" id="thank-you-modal">
-        <!-- Thank you message rendered in JS -->
 
       </section>
       
