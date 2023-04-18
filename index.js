@@ -41,8 +41,10 @@ function renderMenu() {
               <p class="menu-item-price">$${item.price}</p>
             </div>
           </div>
-          <button class="add-btn" data-item="${item.id}">+</button>
-          <button class="remove-btn hidden" data-item="${item.id}">-</button>
+
+          <button class="add-btn" aria-label="add one item" data-item="${item.id}">+</button>
+          <button class="remove-btn hidden" aria-label="remove one item" data-item="${item.id}">-</button>
+
         </div>`
     })
     menuContainer.innerHTML = menuFeed; 
