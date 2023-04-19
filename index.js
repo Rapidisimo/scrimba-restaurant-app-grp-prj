@@ -104,11 +104,11 @@ function renderOrder(menuItems) {//Your Order section
     orderItems.innerHTML = orderHtml; //update DOM
 
     let itemsTotal = 0; //for loop to get a Total Price
-    for(let i = 0; i < cartArray.length; i++) {
-        itemsTotal += (cartArray[i].price * cartArray[i].quantity)
-    };
+    cartArray.forEach( (ammount) => {
+        itemsTotal += ammount.price * ammount.quantity;
+    })
     runningTotal = itemsTotal; //update global variable
-    document.getElementById('total').innerText = `$${runningTotal}` //update DOM
+    document.getElementById('total').innerText = `$${runningTotal}`; //update DOM
 
     const removeBtns = document.querySelectorAll('.remove-all-btn');
     removeBtns.forEach( btn => {
