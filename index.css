@@ -1,3 +1,9 @@
+/* 
+Main Author: Josue R. - https://github.com/Rapidisimo
+Additional Code: Cassie L. - https://github.com/casserole27
+Organization & Refining: Cassie L. https://github.com/casserole27
+*/
+
 /* Font from figma mockup */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&family=Smythe&display=swap');
 
@@ -171,7 +177,7 @@ main {
 
 
 
-/******* Payment Modal *******/
+/******* Payment Modal *******/ /*Cassie added*/
 
 .payment-modal {
     max-width: 525px;
@@ -225,7 +231,7 @@ input {
 }
 
 
-/****** Discount Modal ******/
+/****** Discount Modal ******/ /*Cassie added*/
 
 .discount-info {
     color: hsl(160, 77%, 36%);
@@ -246,7 +252,7 @@ input {
 }
 
 
-/******* Thank You Message and Star Rating *******/
+/******* Thank You Message and Star Rating *******/ /*Cassie added*/
 
 .thank-you-modal,
 .rating-modal {
@@ -326,7 +332,7 @@ button {
     cursor: pointer;
 }
 
-button:focus {
+button:focus { /*Cassie added*/
     transform: scale(0.90);
 }
 
@@ -359,7 +365,7 @@ button:focus {
     
 }
 
-/****** REMOVE NUMBER SPINNER FROM INPUTS ******/
+/****** REMOVE NUMBER SPINNER FROM INPUTS ******/ /*Cassie added*/
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

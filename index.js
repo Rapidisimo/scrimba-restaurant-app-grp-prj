@@ -1,3 +1,8 @@
+/* 
+Authors: Josue R. - https://github.com/Rapidisimo
+Cassie L. - https://github.com/casserole27
+*/
+
 import { menuArray } from "./data.js"
 
 /****** VARIABLES ******/
@@ -29,6 +34,7 @@ const ratingStars = [...document.getElementsByClassName("rating-star")];
 
 /****** FUNCTIONS ******/
 
+/* Coded by Cassie */
 function renderMenu() {
     let menuFeed = ""
     menuArray.forEach(function(item) {
@@ -57,7 +63,7 @@ function renderMenu() {
 
 renderMenu()
 
-
+/* Coded by Josue */
 function removeItem(id) { //individually enable (-) button based on id of item added to order/cart
     const removeBtn = document.querySelectorAll('.remove-btn');
     removeBtn.forEach( function(minusBtn) {
@@ -67,7 +73,7 @@ function removeItem(id) { //individually enable (-) button based on id of item a
     });
 };
 
-
+/* Coded by Josue */
 function removeMinusBtn(id) { //if you remove all of the same type of item this remove the minus btn
     const removeBtn = document.querySelectorAll('.remove-btn');
     removeBtn.forEach( function(minusBtn) {
@@ -77,7 +83,7 @@ function removeMinusBtn(id) { //if you remove all of the same type of item this 
     });
 };
 
-
+/* Coded by Josue */
 function renderOrder(menuItems) {//Your Order section 
     const orderItems = document.getElementById('order-summary');
     if(cart.classList.contains('hidden') || cartArray.length === 0) { //toggle Your Order section visible
@@ -99,11 +105,11 @@ function renderOrder(menuItems) {//Your Order section
     orderItems.innerHTML = orderHtml; //update DOM
 
     let itemsTotal = 0; //for loop to get a Total Price
-    for(let i = 0; i < cartArray.length; i++) {
-        itemsTotal += (cartArray[i].price * cartArray[i].quantity)
-    };
+    cartArray.forEach( (ammount) => {
+        itemsTotal += ammount.price * ammount.quantity;
+    })
     runningTotal = itemsTotal; //update global variable
-    document.getElementById('total').innerText = `$${runningTotal}` //update DOM
+    document.getElementById('total').innerText = `$${runningTotal}`; //update DOM
 
     const removeBtns = document.querySelectorAll('.remove-all-btn');
     removeBtns.forEach( btn => {
@@ -119,7 +125,7 @@ function renderOrder(menuItems) {//Your Order section
     });
 };
 
-
+/* Coded by Cassie */
 function renderMealDiscount(arr) {
     // variable stores an or conditional as well as using the .some method to see if at least one item in the array is greater than 1
     let showDiscount = arr.length >= 2 || cartArray.some(item => item.quantity > 1);
@@ -139,7 +145,7 @@ function renderMealDiscount(arr) {
     };
 };
 
-
+/* Coded by Cassie */
 function renderThankYouMsg() {
     let name = customerName.value;
  
@@ -150,7 +156,7 @@ function renderThankYouMsg() {
       <p class="message">Your order is on its way!</p>
     </div>`
 }
-
+/* Coded by Cassie */
 function completeOrder() {
     
     renderThankYouMsg();
@@ -174,7 +180,7 @@ function completeOrder() {
     resetOrder();
 };
 
-
+/* Coded by Cassie */
 function resetOrder() {
     
     //reset Your Order
@@ -195,7 +201,7 @@ function resetOrder() {
         }});
 };
 
-
+/* Coded by Cassie */
 function renderRating(stars) {
     const starClassActive = "rating-star fa-solid fa-star fa-lg"; //solid star
     const starClassInactive = "rating-star fa-regular fa-star fa-lg"; //regular star
@@ -224,7 +230,7 @@ renderRating(ratingStars);
 
 /****** EVENT LISTENERS ******/
 
-
+/* Coded by Josue */
 menuContainer.addEventListener("click", (e) => {
     if(e.target.className === 'add-btn') {
         let item = e.target.dataset.item; //get an id for what was clicked
@@ -255,24 +261,24 @@ menuContainer.addEventListener("click", (e) => {
     };
 });
 
-
+/* Coded by Cassie */
 completeBtn.addEventListener("click", function() {
     if(paymentModal.classList.contains('hidden')) { //toggle Payment Modal visible
         paymentModal.classList.toggle('hidden');
     };
 });
 
-
+/* Coded by Cassie */
 modalCloseBtn.addEventListener("click", function() {
     paymentModal.classList.toggle('hidden'); //toggle Payment Modal invisible
 });
 
-
+/* Coded by Cassie */
 modalPayBtn.addEventListener("click", function() {
    completeOrder();  
 });
 
-
+/* Coded by Cassie */
 newOrderBtn.addEventListener("click", function() {
     thankYouModal.classList.toggle('hidden');
     ratingModal.classList.toggle('hidden');
