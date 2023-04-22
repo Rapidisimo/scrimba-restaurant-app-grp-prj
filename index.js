@@ -33,6 +33,7 @@ const ratingStars = [...document.getElementsByClassName("rating-star")];
 
 
 /****** FUNCTIONS ******/
+
 /* Coded by Cassie */
 function renderMenu() {
     let menuFeed = ""
