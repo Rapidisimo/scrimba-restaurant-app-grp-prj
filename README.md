@@ -71,6 +71,17 @@ Stretch goals:
 ### Continued development
 
 -tab index
+-stars as buttons can't tab backwards
+
+Code reviewer notes:
+- modal naming, they aren't all modals
+- know how to display ingredients without the .join() method (fine to use method)
+- naming convention on function removeItem is confusing
+- possible else if statement in removeItem function instead of two functions, removeItem and removeMinusBtn?
+- separate JS file or folder since the file is so long, export/import
+- renderOrder called inside renderOrder - suggest creating separate removeAll function
+- completeOrder function at end, or separate file
+- renderOrder is a large function - server costs
 
 
 ### Useful resources
